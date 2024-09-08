@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Improved Scroll Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The Element Object</h1>
+    <h2>Focus Events</h2>
+
+
+
+    <p>Move focus to the password field to see the effect:</p>
+
+    <form id="form">
+        <input type="text" placeholder="username">
+        <input type="password" placeholder="password">
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pwd = document.querySelector('input[type="password"]');
+            const usr = document.querySelector('input[type="text"]');
+
+
+            pwd.addEventListener('focus', (e) => {
+                e.target.style.backgroundColor = 'yellow';
+            });
+
+            pwd.addEventListener('blur', (e) => {
+                e.target.style.backgroundColor = '';
+            });
+
+
+            usr.addEventListener('focus', (e) => {
+                e.target.style.backgroundColor = 'green';
+            });
+
+            usr.addEventListener('blur', (e) => {
+                e.target.style.backgroundColor = '';
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

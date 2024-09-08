@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        #scrollable {
+            width: 300px;
+            height: 200px;
+            overflow: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        
+        .content {
+            height: 800px;
+            /* Create a scrollable area */
+        }
+        
+        .custom-menu {
+            display: none;
+            position: absolute;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1000;
+        }
+        
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The Element Object</h1>
+    <h2>Keyboard Events</h2>
+
+    <h1>Press Ctrl + S to see an action</h1>
+    <br><br>
+
+    <p>Press a key in the input field:</p>
+
+    <!-- <input type="text" onkeydown="myFunction()"> -->
+    <input type="text">
+    <p id="demo" class="success"></p>
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('keydown', function(event) {
+                if (event.ctrlKey && event.key === 's') {
+                    event.preventDefault(); // Prevent the default save dialog
+                    console.log('Ctrl + S detected');
+                }
+            });
+
+            document.addEventListener('keydown', function() {
+                document.getElementById("demo").innerHTML = "You pressed a key inside the input field";
+            });
+
+        });
+
+        /*function myFunction() {
+            document.getElementById("demo").innerHTML = "You pressed a key inside the input field";
+        }*/
+    </script>
+
+</body>
+
+</html>
+
+<!-- 
+Summary
+Best Practices
+-Use keydown for most cases: It provides more consistent results for detecting key presses and combinations.
+-Avoid using keypress: It is less reliable and not recommended for modern applications.
+-Handle key combinations carefully: Use (event.ctrlKey, event.altKey, and event.shiftKey) to detect combinations and perform actions accordingly.
+-These events are useful for handling user input, creating keyboard shortcuts, and providing dynamic responses to keyboard actions.
+-->

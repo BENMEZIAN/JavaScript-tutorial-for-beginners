@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>get children</title>
+</head>
+
+<body>
+
+    <h1>The Element Object</h1>
+    <h2>Get children</h2>
+
+    <ul id="menu">
+        <li class="first">Home</li>
+        <li>Products</li>
+        <li class="current">Customer Support</li>
+        <li>Careers</li>
+        <li>Investors</li>
+        <li>News</li>
+        <li class="last">About Us</li>
+    </ul>
+
+    <p id="first-child"></p>
+    <p id="last-child"></p>
+    <p id="children"></p>
+
+
+    <script>
+        let content = document.getElementById('menu');
+        console.log(content.firstElementChild); // Get first element
+        console.log(content.lastElementChild); // Get last element
+        console.log(content.children); // Get all child elements
+
+        var first_child = document.getElementById("first-child");
+        var last_child = document.getElementById("last-child");
+        var children = document.getElementById("children");
+
+        first_child.innerHTML = content.firstElementChild.innerHTML;
+        last_child.innerHTML = content.lastElementChild.innerHTML;
+        children.innerHTML = content.children.length;
+
+        // Build the list of all children
+        let childrenHtml = '';
+        childrenHtml += "Element number is : " + children.innerHTML + "<br><br>";
+        for (var i = 0; i < content.children.length; i++) {
+            childrenHtml += "Element numero " + (i + 1) + " : " + content.children[i].innerHTML + "<br>";
+        }
+        children.innerHTML = childrenHtml;
+    </script>
+
+</body>
+
+</html>
+
+<!-- for (var i = 0; i < content.children.length; i++) {
+    console.log(content.children[i].innerHTML);
+    document.write("Element numero " + (i + 1) + " : " + "<p>" + content.children[i].innerHTML + "</p>");
+} -->

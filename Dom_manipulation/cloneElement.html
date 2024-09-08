@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clone method</title>
+</head>
+
+<body>
+
+    <h1>The Element Object</h1>
+    <h2>The cloneNode() Method</h2>
+
+    <ul id="myList1">
+        <li>Coffee</li>
+        <li>Tea</li>
+    </ul>
+    <ul id="myList2">
+        <li>Water</li>
+        <li>Milk</li>
+    </ul>
+
+    <p>Click "Copy" to copy an item from one list to another.</p>
+    <button onclick="clone()">Copy</button>
+
+    <div id="tutpoint">
+        Learn coding with tutorialspoint by sitting everywhere
+    </div>
+
+
+    <script>
+        function clone() {
+            const node = document.getElementById("myList2").lastElementChild;
+            const clone = node.cloneNode(true);
+            document.getElementById("myList1").appendChild(clone);
+
+            const node1 = document.getElementById("myList1").firstElementChild;
+            const clone1 = node1.cloneNode(true);
+            document.getElementById("myList2").appendChild(clone1);
+        }
+
+        const div = document.getElementById("tutpoint")
+        const cloneDiv = div.cloneNode(true);
+        cloneDiv.id = "tutpoint1";
+        document.body.appendChild(cloneDiv);
+    </script>
+
+</body>
+
+</html>

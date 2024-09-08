@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Get Parent</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .info-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .info-box strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+            /* Allows wrapping */
+            word-wrap: break-word;
+            /* Breaks long words */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The Element Object</h1>
+    <h2>Get Parent</h2>
+
+    <ul id="menu">
+        <li class="first">Home</li>
+        <li>Products</li>
+        <li class="current">Customer Support</li>
+        <li>Careers</li>
+        <li>Investors</li>
+        <li>News</li>
+        <li class="last">About Us</li>
+    </ul>
+
+    <div class="info-box" id="parent-node"></div>
+
+    <script>
+        // Select the element with class 'current'
+        let current = document.getElementsByClassName("current");
+
+        // Check if any elements are found
+        if (current.length > 0) {
+            // Access the first element in the collection
+            let currentElement = current[0];
+
+            // Access the parent node
+            let parentNode = currentElement.parentNode;
+
+            // Get the <div> element to display the parent node's information
+            let parentNodeDiv = document.getElementById("parent-node");
+
+            // Create a descriptive message with detailed information about the parent node
+            let message =
+                "<strong>Parent Node Tag Name:</strong> " + parentNode.tagName + "<br>" +
+                "<strong>Parent Node HTML:</strong> <pre>" + parentNode.outerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;') + "</pre>" +
+                "<strong>Parent Node Content:</strong> <pre>" + parentNode.innerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;') + "</pre>";
+
+            // Set the HTML content of the <div> tag with the detailed information
+            parentNodeDiv.innerHTML = message;
+
+            // Also print detailed information to the console for debugging
+            console.log("Current Element:", currentElement);
+            console.log("Parent Node:", parentNode);
+            console.log("Parent Node HTML:", parentNode.outerHTML);
+            console.log("Parent Node Content:", parentNode.innerHTML);
+            console.log("Parent Node Tag Name:", parentNode.tagName);
+        } else {
+            console.log("No elements with the class 'current' found.");
+        }
+    </script>
+
+</body>
+
+</html>

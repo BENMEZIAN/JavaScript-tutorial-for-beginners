@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RemoveChild method</title>
+</head>
+
+<body>
+
+    <p id="myId">I'm paragraph</p>
+    <p class="myClass">I'm paragraph 2</p>
+    <p class="myClass">I'm paragraph 3</p>
+    <h4 id="hello">titre</h4>
+    <input name="myName" id="myInput" value="Hello">
+
+    <p>Click "Remove" to remove the input:</p>
+    <button onclick="Remove()">Remove</button>
+
+    <br>
+
+    <ul id="myList">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>
+
+    <p>Click "First Item" to remove the first item from the list:</p>
+    <button onclick="removeFirstItem()">First</button>
+
+    <p>Click "Last Item" to remove the last item from the list:</p>
+    <button onclick="removeLastItem()">Last</button>
+
+    <p>Click "All" to remove all child nodes of ul.</p>
+    <button onclick="removeAllItems()">All</button>
+    <br><br>
+
+
+
+    <script>
+        function Remove() {
+            // Use removeChild method to delete input
+            var ele = document.querySelector("input");
+            console.log(ele);
+            console.log(ele.parentNode);
+            ele.parentNode.removeChild(ele);
+        }
+
+        function removeFirstItem() {
+            const list = document.getElementById("myList");
+            list.removeChild(list.firstElementChild);
+        }
+
+        function removeLastItem() {
+            const list = document.getElementById("myList");
+            list.removeChild(list.lastElementChild);
+        }
+
+        function removeAllItems() {
+            const list = document.getElementById("myList");
+            while (list.hasChildNodes()) {
+                list.removeChild(list.firstChild);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

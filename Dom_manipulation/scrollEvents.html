@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Improved Scroll Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        /* Scroll progress bar */
+        
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background-color: green;
+            z-index: 9999;
+        }
+        /* Scrollable content */
+        
+        #scrollable {
+            width: 300px;
+            height: 200px;
+            overflow: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        
+        .content {
+            height: 800px;
+            /* Create a scrollable area */
+        }
+        
+        .custom-menu {
+            display: none;
+            position: absolute;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1000;
+        }
+        
+        .success {
+            color: green;
+        }
+        /* Back to Top Button */
+        
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="scrollProgress"></div>
+    <!-- Scroll progress bar -->
+
+    <h1>The Element Object</h1>
+    <h2>Scroll Events</h2>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet quod explicabo nihil numquam sunt officiis corrupti? Temporibus vero corporis omnis dolorem aspernatur, nihil eos eaque maxime deleniti molestiae vitae aperiam ut laboriosam
+        dolore quo est architecto nemo nulla dolorum exercitationem neque quos! Corrupti ad dignissimos tenetur aspernatur provident! Quidem consectetur sapiente laudantium dignissimos similique in, quibusdam quod vitae dolorem explicabo necessitatibus
+        eveniet nemo vel dolore accusamus ducimus nulla fugiat maiores id! Nesciunt quaerat harum, labore, amet maxime, ratione ab nobis illum atque deleniti nemo expedita earum possimus culpa exercitationem porro architecto iste. Velit placeat tempore,
+        odio eveniet earum iusto consequuntur quidem vel quis repellat perferendis commodi ea mollitia laborum tempora inventore at. Pariatur ipsum reprehenderit earum nobis! Recusandae, accusantium tempore quatibus maiores ducimus adipisci dolorem voluptas
+        sint voluptatum voluptates libero, quod magnam explicabo rerum? Autem aliquid mollitia modi minima quasi, temporibus totam eum fugit eaque. Excepturi officiis ab deserunt est! Quaerat expedita harum iusto pariacepturi sapiente non dicta? Fuga
+        totam quae similique sapiente voluptas accusantium maxime nam omnis fugit ratione, blaasi omnis. Alias fuga hic eveniet, qui corporis nostrum, dicta maiores vel voluptatum quibusdam facilis modi saepe quo facere dolore magni ipsa excepturi assumenda
+        ex et qus impedit esse sequi numquam officia? Earum autem pariatur, eos nihil excepturi officiis nulla officia quam velit neque, iste omnis quidem laborum modi ad quod placeat fugiat? Assumenda aliquid, aspernatur ipsam rerum illum cumque esse,
+        excepturi eveniet sunt velit ea eum. Dolor error, id animi nihil eos, nemo vo!
+    </p>
+
+    <!-- Back to top button -->
+    <div id="backToTop">Back to Top</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const backToTop = document.getElementById('backToTop');
+
+            // Function to update the scroll progress bar
+            function updateScrollProgress() {
+                const scrollPosition = window.scrollY;
+                const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercentage = (scrollPosition / pageHeight) * 100;
+                scrollProgress.style.width = scrollPercentage + "%";
+            }
+
+            // Function to show/hide the back to top button
+            function toggleBackToTop() {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = 'block';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            }
+
+            // Scroll event listener with throttling for better performance
+            let isScrolling;
+            window.addEventListener('scroll', function() {
+                window.clearTimeout(isScrolling);
+
+                // Update the scroll progress bar and back-to-top button visibility
+                isScrolling = setTimeout(function() {
+                    updateScrollProgress();
+                    toggleBackToTop();
+                }, 100); // Throttling: Runs every 100ms
+            });
+
+            // Scroll back to top when the button is clicked
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth' // Smooth scroll back to the top
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        #scrollable {
+            width: 300px;
+            height: 200px;
+            overflow: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        
+        .content {
+            height: 800px;
+            /* Create a scrollable area */
+        }
+        
+        .custom-menu {
+            display: none;
+            position: absolute;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The Element Object</h1>
+    <h2>Mouse Events</h2>
+
+    <button id="btn1">Click Me!</button>
+    <br><br>
+    <button id="btn2">Double Click Me!</button>
+    <br><br>
+    <button id="btn3">Hover Me!</button>
+    <br><br>
+    <button id="btn4">Click Me!</button>
+    <br><br>
+    <button id="btn5">Click Me!</button>
+    <br><br>
+    <button id="btn6">Click Me!</button>
+    <br><br>
+    <button id="btn7">Click Me!</button>
+    <br><br>
+
+    <div id="scrollable">
+        <div class="content">
+            Scroll inside this box to see the event in action.
+        </div>
+    </div>
+
+    <div id="target" style="width: 200px; height: 200px; background: lightblue; text-align: center; line-height: 200px;">
+        Right-click me!
+    </div>
+    <div id="custom-menu" class="custom-menu">
+        <p>Custom Menu Item 1</p>
+        <p>Custom Menu Item 2</p>
+        <p>Custom Menu Item 3</p>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            //alert('Page loaded');
+
+            let btn1 = document.querySelector('#btn1');
+            let btn2 = document.querySelector('#btn2');
+            let btn3 = document.querySelector('#btn3');
+            let btn4 = document.querySelector('#btn4');
+            let btn5 = document.querySelector('#btn5');
+            let btn6 = document.querySelector('#btn6');
+            let btn7 = document.querySelector('#btn7');
+
+            btn1.addEventListener('click', function() {
+                alert('Button 1 clicked');
+            });
+
+            btn2.addEventListener('dblclick', function() {
+                alert('Button 2 double-clicked');
+            });
+
+
+            btn3.addEventListener('mouseover', function() {
+                alert('Button 3 hovered');
+            });
+
+
+            btn3.addEventListener('mouseout', function() {
+                alert('Button 3 hovered out');
+            });
+
+            btn4.addEventListener('mousedown', function() {
+                alert('Button 4 mouse down');
+            });
+
+            btn5.addEventListener('mouseup', function() {
+                alert('Button 5 mouse up');
+            });
+
+            btn6.addEventListener('mouseenter', function() {
+                alert('Button 6 mouse enter');
+            });
+
+            btn7.addEventListener('mouseleave', function() {
+                alert('Button 7 mouse leave');
+            });
+
+            const scrollable = document.getElementById('scrollable');
+
+            scrollable.addEventListener('wheel', function(event) {
+                if (event.deltaY > 0) {
+                    console.log('Scrolled down');
+                } else {
+                    console.log('Scrolled up');
+                }
+
+                // Prevent the default scrolling behavior if needed
+                // event.preventDefault();
+            });
+
+            const target = document.getElementById('target');
+            const customMenu = document.getElementById('custom-menu');
+
+            target.addEventListener('contextmenu', function(event) {
+                event.preventDefault(); // Prevent default context menu
+
+                // Position the custom menu
+                customMenu.style.left = `${event.pageX}px`;
+                customMenu.style.top = `${event.pageY}px`;
+                customMenu.style.display = 'block';
+            });
+
+            // Hide the custom menu when clicking elsewhere
+            document.addEventListener('click', function() {
+                customMenu.style.display = 'none';
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
+
+<!-- 
+Summary
+
+-->

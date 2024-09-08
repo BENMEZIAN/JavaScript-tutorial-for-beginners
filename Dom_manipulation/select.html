@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+    <title>DOM -part 1-</title>
+</head>
+
+<body>
+
+    <p id="myId">I'm paragraph</p>
+    <p class="myClass">I'm paragraph 2</p>
+    <p class="myClass">I'm paragraph 3</p>
+    <h4 id="hello">titre</h4>
+    <input name="myName" id="myInput" value="Hello">
+    <br>
+
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <br>
+    <!-- multiple checkboxes -->
+    <input type="checkbox" id="myCheck1" name="myCheck">
+    <input type="checkbox" id="myCheck2" name="myCheck">
+    <input type="checkbox" id="myCheck3" name="myCheck">
+    <br>
+
+    <p>Please rate the service:</p>
+    <p>
+        <label for="very-poor">
+            <input type="radio" name="rate" value="Very poor" id="very-poor"> Very poor
+        </label>
+        <label for="poor">
+            <input type="radio" name="rate" value="Poor" id="poor"> Poor
+        </label>
+        <label for="ok">
+            <input type="radio" name="rate" value="OK" id="ok"> OK
+        </label>
+        <label for="good">
+            <input type="radio" name="rate" value="Good"> Good
+        </label>
+        <label for="very-good">
+            <input type="radio" name="rate" value="Very Good" id="very-good"> Very Good
+        </label>
+    </p>
+    <p>
+        <button id="btnRate">Submit</button>
+    </p>
+    <p id="output"></p>
+    <br>
+
+    <form id="userForm">
+        <label>
+          <input type="radio" name="ageGroup" value="18-24" class="age-radio">18-24
+        </label>
+        <label>
+          <input type="radio" name="ageGroup" value="25-34" class="age-radio">25-34
+        </label>
+        <label>
+          <input type="radio" name="ageGroup" value="35-44" class="age-radio">35-44
+        </label>
+    </form>
+    <p id="output-radio"></p>
+
+
+
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+    <script>
+        // Access to the value of the element by ID -1-
+        var myElement = document.getElementById("myId").innerHTML;
+        console.log(myElement);
+        document.write("<h1>" + myElement + "</h1>");
+
+        // Access to the value of the element by ID -2-
+        var h4 = document.getElementById("hello").innerHTML;
+        console.log(h4);
+        document.write("<h1>" + h4 + "</h1>");
+
+        document.write("<hr>");
+
+        // Access to the value of the element by TagName -1-
+        var myInput = document.getElementsByTagName("p");
+        console.log(myInput);
+        console.log("length is : " + myInput.length);
+
+        for (var i = 0; i < myInput.length; i++) {
+            console.log(myInput[i].innerText);
+            document.write("<h1>" + myInput[i].innerText + "</h1>");
+        }
+
+        // Access to the value of the element by TagName -2-
+        var myList = document.getElementsByTagName("li");
+        console.log(myList);
+        console.log("length is : " + myList.length);
+
+        for (var i = 0; i < myList.length; i++) {
+            console.log(myList[i].innerHTML);
+            document.write("<h1>" + myList[i].innerHTML + "</h1>");
+            myList[i].style.color = 'red';
+        }
+
+        document.write("<hr>");
+
+        // Access to the value of the element by class
+        var myClass = document.getElementsByClassName("myClass");
+        console.log(myClass);
+        console.log("length is : " + myClass.length);
+
+        for (var i = 0; i < myClass.length; i++) {
+            console.log(myClass[i].innerHTML);
+            document.write("<h1>" + myClass[i].innerHTML + "</h1>");
+            myClass[i].style.color = 'green';
+        }
+
+        document.write("<hr>");
+
+        // Access to the value of the element by name -1-
+        var myName = document.getElementsByName("myName");
+        console.log(myName);
+        console.log("length is : " + myName.length);
+
+        for (var i = 0; i < myName.length; i++) {
+            console.log(myName[i].value);
+            document.write("<h1>" + myName[i].value + "</h1>");
+        }
+
+        // Access to the value of the element by name -2-
+        var myCheck = document.getElementsByName("myCheck");
+        console.log(myCheck);
+        console.log("length is : " + myCheck.length);
+
+        for (var i = 0; i < myCheck.length; i++) {
+            console.log(myCheck[i].value);
+            document.write("<h1>" + myCheck[i].value + "</h1>");
+        }
+
+        document.write("<hr>");
+
+        // Access to the value of the element by name -3-
+        let btn = document.getElementById('btnRate');
+        let output = document.getElementById('output');
+
+        btn.addEventListener('click', () => {
+            let rates = document.getElementsByName('rate');
+            rates.forEach((rate) => {
+                if (rate.checked) {
+                    output.innerText = `You selected: ${rate.value}`;
+                }
+            });
+
+        });
+
+        // Access to the values with querySelector || querySelectorAll
+        let output_radio = document.getElementById("output-radio");
+        const formRadios = document.querySelectorAll('#userForm input[type="radio"]');
+
+        console.log(formRadios);
+        // Loop through this NodeList using for loop
+        for (let i = 0; i < formRadios.length; i++) {
+            console.log(formRadios[i]);
+            console.log(formRadios[i].value);
+        }
+
+        // Iterate over each radio button with for loop
+        for (let i = 0; i < formRadios.length; i++) {
+            formRadios[i].addEventListener('change', function() {
+                if (this.checked) {
+                    output_radio.innerText = this.value;
+                }
+            });
+        }
+
+        // Iterate over each radio button with forEach Method
+        formRadios.forEach((radio) => {
+            radio.addEventListener('change', (event) => {
+                output_radio.innerText = event.target.value;
+            });
+        });
+    </script>
+
+</body>
+
+</html>

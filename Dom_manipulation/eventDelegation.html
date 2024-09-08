@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation Example</title>
+</head>
+
+<body>
+    <ul id="menu">
+        <li><a id="home">home</a></li>
+        <li><a id="dashboard">Dashboard</a></li>
+        <li><a id="report">report</a></li>
+    </ul>
+
+
+
+
+
+    <script>
+        const menu = document.getElementById('menu');
+
+        menu.addEventListener('click', function(event) {
+            let target = event.target;
+            //console.log(target.id);
+
+            switch (target.id) {
+                case 'home':
+                    console.log('home was clicked');
+                    break;
+                case 'dashboard':
+                    console.log('dashboard was clicked');
+                    break;
+                case 'report':
+                    console.log('report was clicked');
+                    break;
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- 
+
+JavaScript event delegation benefits
+------------------------------------
+When it is possible, you can have a single event handler on the document that will handle all the events of a particular type. By doing this, you gain the following benefits:
+
+Less memory usage, better performance.
+Less time is required to set up event handlers on the page.
+The document object is available immediately. As long as the element is rendered, it can start functioning correctly without delay. You don’t need to wait for the DOMContentLoaded or load events.
+
+Summary
+-------
+Having a large number of event handlers will take up memory and degrade the performance of a page.
+The event delegation technique utilizes the event bubbling to handle the event at a higher level in the DOM than the element on which the event originated.
+-->

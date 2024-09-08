@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The Element Object</h1>
+    <h2>Page Load Events</h2>
+
+    <form id="myForm">
+        <input type="text" id="myText3">
+        <input type="text" id="myText4">
+    </form>
+
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            alert('Page loaded');
+        });
+
+        document.addEventListener('load', function() {
+            alert('Page loaded');
+        });
+    </script>
+
+</body>
+
+</html>
+
+<!-- 
+Summary
+
+-->

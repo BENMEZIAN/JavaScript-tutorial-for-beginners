@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Change CSS style</title>
+</head>
+
+<body>
+
+    <p id="myId">I'm paragraph</p>
+    <p class="myClass">I'm paragraph 2</p>
+    <p class="myClass">I'm paragraph 3</p>
+    <h4 id="hello">titre</h4>
+    <input name="myName" id="myInput" value="Hello">
+    <br>
+
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <br>
+
+
+
+
+    <script>
+        var myElement = document.getElementById("myId");
+        let val = myElement.innerHTML;
+        console.log(val);
+        myElement.setAttribute("style", "color:red;font-size:4rem;background-color:pink");
+
+        // Do settings on class
+        var myClass = document.getElementsByClassName("myClass");
+        for (var i = 0; i < myClass.length; i++) {
+            console.log(myClass[i].innerHTML);
+            myClass[i].setAttribute("style", "color:green;font-size:4rem;background-color:purple");
+        }
+
+        // Change border of input
+        var myInput = document.getElementsByTagName("input");
+        for (var i = 0; i < myInput.length; i++) {
+            console.log(myInput[i].value);
+            // Add event listener for 'focus' event
+            myInput[i].addEventListener("focus", function() {
+                this.style.width = "50%";
+                this.style.transition = "border-width 0.3s ease";
+            });
+
+            // Add event listener for 'blur' event to reset the style
+            myInput[i].addEventListener("blur", function() {
+                this.style.border = "";
+                this.style.width = "";
+            });
+        }
+    </script>
+
+</body>
+
+</html>

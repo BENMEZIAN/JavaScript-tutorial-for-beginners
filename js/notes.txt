@@ -1,0 +1,60 @@
+js tutorial for beginners
+
+let vs var
+-- https://sentry.io/answers/difference-between-let-and-var-in-javascript/
+
+from string to number
+-- https://www.tutorialspoint.com/how-to-convert-a-string-into-integer-in-javascript#:~:text=To%20convert%20a%20string%20to,be%20returned%20as%20the%20output.
+
+user input js
+-- https://codehs.com/tutorial/rachel/user-input-in-javascript
+
+events in js
+-- https://www.javascripttutorial.net/javascript-dom/javascript-events/
+-- https://javascript.info/events
+
+what kind of variable is used with loop in js
+
+for...in vs for...of in js
+-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
+-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+-- https://stackoverflow.com/questions/29285897/difference-between-for-in-and-for-of-statements
+-- https://www.codingem.com/javascript-for-of-vs-for-in-loops/
+-- https://blog.kevinchisholm.com/javascript/for-in-vs-for-of/
+
+js function
+
+nested function js
+-- https://www.geeksforgeeks.org/javascript-nested-functions/
+
+Using the arguments object
+-- https://reference.codeproject.com/javascript/Reference/Functions/arguments
+
+functions inside object javascript
+-- https://www.tutorjoes.in/JS_tutorial/function_inside_object_in_javascript#:~:text=In%20JavaScript%2C%20functions%20can%20be,%3A%20function()%20%7B%20console.
+
+
+array methods js
+-- https://javascript.info/array-methods
+-- https://www.programiz.com/javascript/library/array
+-- https://www.javascripttutorial.net/javascript-array-methods/
+-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+array like objects in javascript
+-- https://www.capscode.in/blog/what-is-array-like-object-in-javascript
+
+array constructor js codepen
+-- https://codepen.io/RGorman62/live/gOWNoeK (array methods is)
+-- https://code-boxx.com/create-table-from-array-javascript/
+
+iterate through array.entries
+-- https://www.geeksforgeeks.org/ways-iterating-array-javascript/
+-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+
+
+---------------------
+https://revealjs.com/
+https://javascript.info
+
+https://codesandbox.io/ (coding plateform)
+

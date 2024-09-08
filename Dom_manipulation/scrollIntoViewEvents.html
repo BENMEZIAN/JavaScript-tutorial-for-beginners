@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Improved Scroll Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        h1,
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #fafafa;
+        }
+        
+        li {
+            padding: 10px;
+            font-size: 18px;
+            border-bottom: 1px solid #e0e0e0;
+            cursor: pointer;
+        }
+        
+        li:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .special {
+            background-color: #ffc107;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="scrollProgress"></div>
+    <!-- Scroll progress bar -->
+
+    <h1>The Element Object</h1>
+    <h2>Scroll Into View Events</h2>
+
+    <div class="container">
+        <button class="btn">Scroll Into View</button>
+        <ul>
+            <li>C</li>
+            <li>Java</li>
+            <li>Python</li>
+            <li>C++</li>
+            <li>C#</li>
+            <li>Go</li>
+            <li>Visual Basic</li>
+            <li>JavaScript</li>
+            <li>PHP</li>
+            <li>SQL</li>
+            <li>R</li>
+            <li>Swift</li>
+            <li class="special">JavaScript</li>
+            <li>MATLAB</li>
+            <li>Assembly language</li>
+            <li>Ruby</li>
+            <li>PL/SQL</li>
+            <li>Classic Visual Basic</li>
+            <li>Perl</li>
+            <li>Scratch</li>
+            <li>Objective-C</li>
+        </ul>
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let btn = document.querySelector('.btn');
+            let el = document.querySelector('.special');
+
+            btn.addEventListener('click', function() {
+                el.scrollIntoView(true);
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Checkboxes</title>
+</head>
+
+<body>
+    <p>Select your favorite colors:</p>
+    <label for="c1"><input type="checkbox" name="color" value="red" id="c1">Red</label>
+    <label for="c2"><input type="checkbox" name="color" value="green" id="c2"> Green</label>
+    <label for="c3"><input type="checkbox" name="color" value="blue" id="c3">Blue</label>
+    <p>
+        <button id="btn">Get Selected Colors</button>
+    </p>
+
+    <p>
+        <button id="check">Toggle Checkboxes</button>
+    </p>
+
+    <p id="root"></p>
+
+    <script>
+        const btn = document.querySelector('#btn');
+
+        btn.addEventListener('click', (event) => {
+            let checkboxes = document.querySelectorAll('input[name="color"]:checked');
+            let values = [];
+            checkboxes.forEach((checkbox) => {
+                values.push(checkbox.value);
+            });
+            alert(values);
+        });
+
+
+        const check = document.querySelector('#check');
+        check.addEventListener('click', toggleCheckboxes);
+
+        function toggleCheckboxes() {
+            const checkboxes = document.querySelectorAll('input[name="color"]');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            checkboxes.forEach(cb => cb.checked = !allChecked);
+        }
+
+        // Create a checkbox dynamically
+        const colors = ["Red", "Green", "Blue"];
+        colors.forEach((color) => {
+            //  generate id
+            const id = `color-${color}`;
+
+            // create a label
+            const label = document.createElement('label');
+            label.setAttribute("for", id);
+
+            // create a checkbox
+            const checkbox = document.createElement('input');
+            checkbox.type = "checkbox";
+            checkbox.name = "color";
+            checkbox.value = color;
+            checkbox.id = id;
+
+            // place the checkbox inside a label
+            label.appendChild(checkbox);
+            // create text node
+            label.appendChild(document.createTextNode(color));
+            // add the label to the root
+            document.querySelector("#root").appendChild(label);
+
+            console.log(checkbox);
+        });
+    </script>
+
+</body>
+
+</html>
+<!-- 
+Summary
+Use the <input> element with the type checkbox to create a checkbox element.
+Place a checkbox inside a label element to improve the usablity and accessibility.
+Use checkbox.checked property or :check selector to test if a checkbox is checked.
+Get the value attribute to get the value of a checkbox.
+-->

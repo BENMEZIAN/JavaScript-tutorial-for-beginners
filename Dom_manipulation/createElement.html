@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>createElement method</title>
+</head>
+
+<body>
+
+    <p id="myId">I'm paragraph</p>
+    <p class="myClass">I'm paragraph 2</p>
+    <p class="myClass">I'm paragraph 3</p>
+    <h4 id="hello">titre</h4>
+    <input name="myName" id="myInput" value="Hello">
+    <br>
+    <ul id="myList">
+        <li>Coffee</li>
+        <li>Tea</li>
+    </ul>
+
+    <p>Click "Append" to append an item to the end of the list:</p>
+    <button onclick="myFunction()">Append</button>
+    <br><br>
+
+
+
+    <script>
+        var myElement = document.createElement("textarea");
+        myElement.setAttribute("name", "myMessage");
+        myElement.setAttribute("id", "myMessage");
+        myElement.setAttribute("placeholder", "Enter your message");
+        myElement.setAttribute("value", "Hello World");
+
+        console.log(myElement);
+        document.body.appendChild(myElement);
+
+        var h1 = document.createElement("h1");
+        h1.setAttribute("style", "color:green;font-size:2rem;background-color:yellow");
+        h1.setAttribute("class", "myClass");
+        h1.setAttribute("id", "myId");
+        document.body.appendChild(h1);
+        h1.innerHTML = "Hello World heading";
+
+        function myFunction() {
+            const node = document.createElement("li");
+            const textnode = document.createTextNode("Water"); //node.innerHTML = "Water";
+            node.appendChild(textnode);
+            document.getElementById("myList").appendChild(node);
+        }
+    </script>
+
+</body>
+
+</html>

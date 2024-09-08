@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change HTML tag</title>
+</head>
+
+<body>
+
+    <p id="myId">I'm paragraph</p>
+    <p class="myClass">I'm paragraph 2</p>
+    <p class="myClass">I'm paragraph 3</p>
+    <h4 id="hello">titre</h4>
+    <input type="text" class="myName" name="myName" id="myInput" value="Hello">
+    <input type="text" class="myName" name="myName" id="Input" value="Hello">
+    <a href="code.html"></a>
+    <br>
+
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <br>
+
+
+
+
+    <script>
+        var input = document.getElementsByClassName("myName");
+        console.log(input);
+
+        // loop through the array
+        for (var i = 0; i < input.length; i++) {
+            // Use getAttribute()
+            console.log("Element number : " + (i + 1))
+            console.log("Class is : " + input[i].getAttribute("class"));
+            console.log("Id is :  " + input[i].getAttribute("id"));
+            console.log("Name is : " + input[i].getAttribute("name"));
+            console.log("Value is :  " + input[i].getAttribute("value"));
+
+            // Set the attributes
+            input[i].setAttribute("value", "Hi");
+
+            // Use getAttribute()
+            console.log("After setting : ");
+            console.log("Class is : " + input[i].getAttribute("class"));
+            console.log("Id is :  " + input[i].getAttribute("id"));
+            console.log("Name is : " + input[i].getAttribute("name"));
+            console.log("Value is :  " + input[i].getAttribute("value"));
+        }
+
+        var link = document.getElementsByTagName("a");
+        console.log(link);
+
+        console.log(link[0].getAttribute("href"));
+
+        link[0].setAttribute("href", "https://www.google.com");
+
+        console.log("After setting : ");
+        console.log(link[0].getAttribute("href"));
+    </script>
+
+</body>
+
+</html>

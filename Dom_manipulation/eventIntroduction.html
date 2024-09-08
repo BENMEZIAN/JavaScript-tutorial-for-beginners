@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The Element Object</h1>
+    <h2>Events 1</h2>
+
+    <button id="btn">Click Me!</button>
+    <br><br>
+
+    <a href="https://www.javascripttutorial.net/">JS Tutorial</a>
+    <br><br>
+
+    <button ondblclick="MyEvent(event)">
+        Check Event
+    </button>
+
+    <p id="test"></p>
+    <br><br>
+
+    <div id="outer" style="background-color: lightblue; padding: 50px;">
+        Outer Div
+        <div id="inner" style="background-color: lightgreen; padding: 30px;">
+            Inner Div
+        </div>
+    </div>
+    <br><br>
+
+
+
+
+
+    <script>
+        // Introduction to JavaScript Events
+        let btn = document.querySelector('#btn');
+
+        btn.addEventListener('click', function() {
+            alert('It was clicked!');
+        });
+
+        // Event object
+        btn.addEventListener('click', function(e) {
+            console.log(e.type);
+        });
+
+        // preventDefault() method to prevent the default behavior of an event, but does not stop the event flow.
+        let link = document.querySelector('a');
+
+        link.addEventListener('click', function(event) {
+            console.log('clicked');
+            event.preventDefault();
+            console.log(event.cancelable); // true
+        });
+
+        function MyEvent(event) {
+            // Check whether the "event" is cancelable or not.
+            var gfg = event.cancelable;
+
+            document.getElementById("test").innerHTML = gfg;
+        }
+
+        // Event handler for the outer div
+        document.getElementById('outer').addEventListener('click', function() {
+            alert('Outer div clicked');
+        });
+
+        // Event handler for the inner div
+        document.getElementById('inner').addEventListener('click', function(event) {
+            alert('Inner div clicked');
+            event.stopPropagation(); // Prevents event from reaching outer div
+        });
+    </script>
+
+</body>
+
+</html>
+
+<!-- 
+Summary
+-An event is an action occurred in the web browser e.g., a mouse click.
+-Event flow has two main models: event bubbling and event capturing.
+-DOM Level 2 Event specifies that the event flow has three phases: event bubbling, the event occurring at the exact element, and event capturing.
+-Use addEventListener() to register an event that connects an event to an event listener
+-The event object is accessible only within the event listener.
+-Use preventDefault() method to prevent the default behavior of an event, but does not stop the event flow.
+-Use stopPropagation() method to stop the flow of an event through the DOM tree, but does not cancel the browser default behavior.
+-->

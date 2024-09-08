@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The Element Object</h1>
+    <h2>Events Handling</h2>
+
+
+    <!-- <input type="button" id="btn" value="Save" onclick="alert('Hello world')"> -->
+
+    <input type="button" id="btn" value="Save">
+
+
+
+
+
+    <script>
+        // 1) HTML event handler attributes
+        function handleClick() {
+            alert('Clicked!');
+        }
+
+        // 2) DOM Level 0 event handlers
+        // To assign an event handler
+        let btn = document.querySelector('#btn');
+        btn.onclick = function() {
+            alert('Clicked!');
+            alert(this.id);
+            alert(this.value);
+            alert(this.type);
+        };
+        // To remove an event handler
+        btn.onclick = null;
+
+        // 3) DOM Level 2 event handlers
+        //let btn = document.querySelector('#btn');
+        btn.addEventListener('click', function(event) {
+            alert(event.type); // click
+        });
+
+        btn.addEventListener('click', function(event) {
+            alert('Clicked!');
+        });
+
+        // Will not work (you must use function names)
+        btn.removeEventListener('click', function(event) {
+            alert('removed!');
+        });
+    </script>
+
+</body>
+
+</html>
+
+<!-- 
+Summary
+-There are three ways to assign an event handler: HTML event handler attribute, element’s event 
+handler property, and addEventListener() method.
+-Assigning an event handler via the HTML event handler attribute should be avoided.
+-->

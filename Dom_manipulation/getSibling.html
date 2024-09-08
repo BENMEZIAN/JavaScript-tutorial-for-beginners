@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Get Sibling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .info-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .info-box strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+            /* Allows wrapping */
+            word-wrap: break-word;
+            /* Breaks long words */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The Element Object</h1>
+    <h2>Get Sibling</h2>
+
+    <ul id="menu">
+        <li class="first">Home</li>
+        <li>Products</li>
+        <li class="current">Customer Support</li>
+        <li>Careers</li>
+        <li>Investors</li>
+        <li>News</li>
+        <li class="last">About Us</li>
+    </ul>
+
+    <div class="info-box" id="next-sibling"></div>
+    <div class="info-box" id="previous-sibling"></div>
+    <div class="info-box" id="all-siblings"></div>
+
+    <script>
+        // Select the element with class 'current'
+        let current = document.getElementsByClassName("current");
+
+        // Check if any elements are found
+        if (current.length > 0) {
+            // Access the first element in the collection
+            let currentElement = current[0];
+
+            let nextSiblingNode = currentElement.nextElementSibling; // Access the next sibling node
+            let previousSiblingNode = currentElement.previousElementSibling; // Access the previous sibling node
+
+            // Get the <div> element to display the parent node's information
+            let nextSiblingNodeDiv = document.getElementById("next-sibling");
+            let previousSiblingNodeDiv = document.getElementById("previous-sibling");
+            let allSiblingsDiv = document.getElementById("all-siblings");
+
+            // Create a descriptive message with detailed information about the next sibling node
+            let message =
+                "<strong>Next Sibling Tag Name:</strong> " + nextSiblingNode.tagName + "<br>" +
+                "<strong>Next Sibling HTML:</strong> <pre>" + nextSiblingNode.outerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;') + "</pre>" +
+                "<strong>Next Sibling Content:</strong> <pre>" + nextSiblingNode.innerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;') + "</pre>";
+
+            nextSiblingNodeDiv.innerHTML = message;
+
+            // Create a descriptive message with detailed information about the previous sibling node
+            let message2 =
+                "<strong>Previous Sibling Tag Name:</strong> " + previousSiblingNode.tagName + "<br>" +
+                "<strong>Previous Sibling HTML:</strong> <pre>" + previousSiblingNode.outerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;') + "</pre>" +
+                "<strong>Previous Sibling Content:</strong> <pre>" + previousSiblingNode.innerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;') + "</pre>";
+
+            previousSiblingNodeDiv.innerHTML = message2;
+
+            // Get all siblings of an element
+            let getSiblings = function(e) {
+                // for collecting siblings
+                let siblings = [];
+                // if no parent, return no sibling
+                if (!e.parentNode) {
+                    return siblings;
+                }
+                // first child of the parent node
+                let sibling = e.parentNode.firstChild;
+
+                // collecting siblings
+                while (sibling) {
+                    if (sibling.nodeType === 1 && sibling !== e) {
+                        siblings.push(sibling);
+                    }
+                    sibling = sibling.nextSibling;
+                }
+                return siblings;
+            };
+
+            let siblings = getSiblings(document.querySelector('.current'));
+            siblingText = siblings.map(e => e.innerHTML);
+            allSiblingsDiv.innerHTML = "<span>Siblings of </span> " + document.querySelector('.current').innerHTML + " <span>are</span> " + siblingText;
+        } else {
+            console.log("No elements with the class 'current' found.");
+        }
+    </script>
+
+</body>
+
+</html>
+
+<!--
+console.log("Current Element:", currentElement);
+
+console.log("Next Sibling Node:", nextSiblingNode);
+console.log("Next Sibling Node HTML:", nextSiblingNode.outerHTML);
+console.log("Next Sibling Node Content:", nextSiblingNode.innerHTML);
+console.log("Next Sibling Node Tag Name:", nextSiblingNode.tagName);
+
+console.log("Previous Sibling Node:", previousSiblingNode);
+console.log("Previous Sibling Node HTML:", previousSiblingNode.outerHTML);
+console.log("Previous Sibling Node Content:", previousSiblingNode.innerHTML);
+console.log("Previous Sibling Node Tag Name:", previousSiblingNode.tagName); 
+
+console.log("Siblings of " + document.querySelector('.current').innerHTML + " sont : " + siblingText);
+-->

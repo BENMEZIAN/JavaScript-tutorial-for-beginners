@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Selected Value</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <form>
+            <label for="framework">Select a JS Framework:</label>
+            <select id="framework">
+                <option value="">Select a framework</option>
+                <option value="Angular">Angular</option>
+                <option value="React">React.js</option>
+                <option value="Vue">Vue.js</option>
+                <option value="Ember">Ember.js</option>
+            </select>
+            <button id="btn">Get the Selected Value</button>
+        </form>
+    </div>
+
+
+
+
+
+    <script>
+        const btn = document.querySelector('#btn');
+        const sb = document.querySelector('#framework');
+
+        //console.log(selectedOption);
+
+        btn.onclick = (event) => {
+            event.preventDefault();
+            let selectedOption = sb.options[sb.selectedIndex];
+            console.log(sb.selectedIndex, sb.value);
+            console.log(selectedOption);
+            console.log(selectedOption.value);
+            console.log(selectedOption.text);
+        };
+    </script>
+</body>
+
+</html>
+
+<!-- /*const selectedValues = [].filter .call(sb.options, option => option.selected) .map(option => option.text); alert(selectedValues);*/ -->
